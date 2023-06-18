@@ -1,0 +1,5 @@
+FROM openjdk:11-jdk-slim
+MAINTAINER IRypS some@gmail.com
+COPY ${JAR_FILE} ms-curso.jar
+EXPOSE 8083
+ENTRYPOINT ["java", "-jar", "ms-curso.jar"]
