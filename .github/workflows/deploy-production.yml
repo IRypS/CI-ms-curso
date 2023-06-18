@@ -41,6 +41,8 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ci-ms-curso:latest
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/ci-ms-curso:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/ci-ms-curso:latest
           file: ./dockerfile.prod
           context: .
