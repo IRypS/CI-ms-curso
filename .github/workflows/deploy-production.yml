@@ -43,3 +43,4 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/ci-ms-curso:latest
           file: ./dockerfile.prod
+          context: .
