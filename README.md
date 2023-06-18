@@ -101,4 +101,6 @@
         - name: List the JARs - funcionará chan chan channnnnn
             run: ls target/
    ```
-3. a
+3. En caso de ocurrir algun error de lectura de mvnw puedes solucionarlo con el comando
+   1. `attrib +x mvnw` - Windows
+   2. `chmod +x mvnw` - Linux / MacOs
