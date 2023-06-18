@@ -3,7 +3,7 @@ name: Create JAR and list JARs
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   create-jar:
