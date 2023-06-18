@@ -17,7 +17,7 @@ public class Test {
         return ResponseEntity.status(200).body("2");
     } 
 
-    @GetMapping( "/hola" )
+    @GetMapping( "/alo" )
     public ResponseEntity<?> somea3() {
         return ResponseEntity.status(200).body("3");
     } 
