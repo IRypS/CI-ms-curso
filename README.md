@@ -79,3 +79,26 @@
 ## Crear el workflow
 
 1. crear el direrctorio `.github/workflows`
+2. crear un yaml para el workflow
+   ```yml
+   name: Create JAR and list JARs
+
+    on:
+    push:
+        branches:
+        - main
+
+    jobs:
+    create-jar:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Check out the repository
+            uses: actions/checkout@v2
+
+        - name: Create the JAR
+            run: ./mvnw clean package -DskipTests
+
+        - name: List the JARs - funcionará chan chan channnnnn
+            run: ls target/
+   ```
+3. a
