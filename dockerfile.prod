@@ -1,5 +1,5 @@
 FROM openjdk:11-jdk-slim
 MAINTAINER IRypS some@gmail.com
-COPY ./target /target
+COPY /target/ms-curso-*.jar ms-curso.jar
 EXPOSE 8083
-ENTRYPOINT ["java", "-jar", "/target/ms-curso.jar"]
+ENTRYPOINT ["java", "-jar", "ms-curso.jar"]
