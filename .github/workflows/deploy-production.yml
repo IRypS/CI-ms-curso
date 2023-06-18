@@ -32,13 +32,13 @@ jobs:
         run: ls target/
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ms-curso
           path: target/ms-curso-*.jar
           if-no-files-found: error
           overwrite: true
-          retention-days: 5
+          retention-days: 1
 
   # docker-build-and-push:
   #   runs-on: ubuntu-22.04
