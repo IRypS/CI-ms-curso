@@ -75,3 +75,7 @@
     1.  Definir la configuracion yml de docker compose
 9.  Esperar y probar al API
 
+
+## Crear el workflow
+
+1. crear el direrctorio `.github/workflows`
