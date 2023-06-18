@@ -37,17 +37,16 @@ jobs:
           name: ms-curso
           path: target/ms-curso-*.jar
           if-no-files-found: error
-          overwrite: true
           retention-days: 1
 
-  # docker-build-and-push:
-  #   runs-on: ubuntu-22.04
-  #   needs: create-jar
+  docker-build-and-push:
+    runs-on: ubuntu-22.04
+    needs: create-jar
 
-  #   steps:
+    steps:
 
-  #     - name: Check out the repository
-  #       uses: actions/checkout@v3
+      - name: Check out the repository
+        uses: actions/checkout@v3
 
-  #     - name: Package the JAR
-  #       run: mvn package -DskipTests
+      - name: see the machine
+        run: ls target/
