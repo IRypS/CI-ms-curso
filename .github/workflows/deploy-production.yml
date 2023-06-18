@@ -45,8 +45,14 @@ jobs:
 
     steps:
 
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: ms-curso
+          path: target/
+
       - name: Check out the repository
         uses: actions/checkout@v3
 
       - name: see the machine
-        run: ls /
+        run: ls target/
