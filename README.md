@@ -133,7 +133,7 @@
                 DATABASE_URL: ${{ secrets.DATABASE_URL }}
                 DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
                 DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-            run: mvn -B package --file pom.xml
+            run: mvn -q -B package --file pom.xml
 
         - name: List the JARs - funcionará chan chan channnnnn
             run: ls target/

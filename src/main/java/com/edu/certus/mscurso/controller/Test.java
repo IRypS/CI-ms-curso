@@ -9,6 +9,11 @@ public class Test {
     
     @GetMapping( "/gg" )
     public ResponseEntity<?> some() {
-        return ResponseEntity.status(200).body("aea");
+        return ResponseEntity.status(200).body("1");
+    }
+
+    @GetMapping( "/hola" )
+    public ResponseEntity<?> somea() {
+        return ResponseEntity.status(200).body("2");
     }
 }
