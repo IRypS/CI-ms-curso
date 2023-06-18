@@ -15,5 +15,10 @@ public class Test {
     @GetMapping( "/hola" )
     public ResponseEntity<?> somea() {
         return ResponseEntity.status(200).body("2");
-    }
+    } 
+
+    @GetMapping( "/hola" )
+    public ResponseEntity<?> somea3() {
+        return ResponseEntity.status(200).body("3");
+    } 
 }
