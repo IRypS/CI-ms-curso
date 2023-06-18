@@ -104,4 +104,38 @@
         - name: List the JARs - funcionará chan chan channnnnn
             run: ls target/
    ```
-3. 
+3. Deebes añadir docker secrets si te encuentras con al sigueinte peroblematica
+   1. Tienes variables de entorno que funcionan con el .env en local
+    ```yml
+    name: Create JAR and list JARs
+
+    on:
+    push:
+        branches:
+        - master
+
+    jobs:
+    create-jar:
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Check out the repository
+            uses: actions/checkout@v3
+
+        - name: Set up JDK 11
+            uses: actions/setup-java@v3
+            with:
+            java-version: '11'
+            distribution: 'temurin'
+
+        - name: Build with Maven
+            env:
+                DATABASE_URL: ${{ secrets.DATABASE_URL }}
+                DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+                DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+            run: mvn -B package --file pom.xml
+
+        - name: List the JARs - funcionará chan chan channnnnn
+            run: ls target/
+    ```
+   2. a

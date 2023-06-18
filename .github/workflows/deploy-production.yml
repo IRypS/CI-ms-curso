@@ -20,7 +20,14 @@ jobs:
           distribution: 'temurin'
 
       - name: Build with Maven
-        run: mvn -B package --file pom.xml -DskipTests=true
+        env:
+          - name: DATABASE_URL
+            value: ${{ secrets.DATABASE_URL }}
+          - name: DATABASE_USERNAME
+            value: ${{ secrets.DATABASE_USERNAME }}
+          - name: DATABASE_PASSWORD
+            value: ${{ secrets.DATABASE_PASSWORD }}
+        run: mvn -B package --file pom.xml
 
       - name: List the JARs - funcionará chan chan channnnnn
         run: ls target/
