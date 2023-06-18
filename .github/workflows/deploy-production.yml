@@ -6,10 +6,12 @@ on:
       - master
 
 jobs:
+
   create-jar:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
+
       - name: Check out the repository
         uses: actions/checkout@v3
 
@@ -28,3 +30,24 @@ jobs:
 
       - name: List the JARs - funcionará chan chan channnnnn
         run: ls target/
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ms-curso
+          path: target/ms-curso-*.jar
+          if-no-files-found: error
+          overwrite: true
+          retention-days: 5
+
+  # docker-build-and-push:
+  #   runs-on: ubuntu-22.04
+  #   needs: create-jar
+
+  #   steps:
+
+  #     - name: Check out the repository
+  #       uses: actions/checkout@v3
+
+  #     - name: Package the JAR
+  #       run: mvn package -DskipTests
