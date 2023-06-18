@@ -91,9 +91,12 @@
     jobs:
     create-jar:
         runs-on: ubuntu-latest
+        permissions:
+      contents: read
+      packages: write
         steps:
         - name: Check out the repository
-            uses: actions/checkout@v2
+            uses: actions/checkout@v3
 
         - name: Create the JAR
             run: ./mvnw clean package -DskipTests
@@ -101,6 +104,4 @@
         - name: List the JARs - funcionará chan chan channnnnn
             run: ls target/
    ```
-3. En caso de ocurrir algun error de lectura de mvnw puedes solucionarlo con el comando
-   1. `attrib +x mvnw` - Windows
-   2. `chmod +x mvnw` - Linux / MacOs
+3. 
