@@ -3,7 +3,7 @@ version: '1.0'
 services:
   ms-curso:
     container_name: ms-curso2
-    image: ${ IMAGE }
+    image: iryps/ci-ms-curso:latest
     ports:
       - 8083:8083
     environment:
