@@ -138,4 +138,14 @@
         - name: List the JARs - funcionará chan chan channnnnn
             run: ls target/
     ```
-   2. a
+   2. SPOILER: SI FUNCIONÓ
+   3. Continuas con el workflow para hacer las demas acciones o pasos
+   4. Logearse a azure
+      1. Obtener las credenciales de azure
+         1. Ve al CLI de azure (Ubicado en la barra superior)
+         2. Coloca los comandos
+             - `az group list` - para seleccioanr un ID de un grupo de recursos
+             - `az ad sp create-for-rbac -n AppSvcDemo --role contributor --scopes "resource_id_group"` - donde `-n` es el nombre que le asignas a la credencial y `resource_id_group` es el id que copiaste del comando anterior (incluir comillas)
+      2. Crea un secreto en el repo 
+         - Guarda el json generado del segundo comando y ponlo en el secreto
+   5. a

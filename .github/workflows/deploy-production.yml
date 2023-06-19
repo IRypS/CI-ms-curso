@@ -46,3 +46,14 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/ci-ms-curso:latest
           file: ./dockerfile.prod
           context: .
+
+  azure-login:
+    needs: dockerize-and-upload
+    runs-on: ubuntu-22.04
+
+    steps:
+    
+    - name: Azure authentication
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
