@@ -61,15 +61,16 @@ jobs:
     - name: Check out the repository
       uses: actions/checkout@v3
 
-    - name: Replace environment variables
+    - name: Replace environment variables in docker-compose.prod.yml
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+        DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+        IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/ci-ms-curso:latest
       run: |
-        sed -i 's|\${DATABASE_URL}|'"${{ secrets.DATABASE_URL }}"'|g' docker-compose.prod.yml
-        sed -i 's|\${DATABASE_USERNAME}|'"${{ secrets.DATABASE_USERNAME }}"'|g' docker-compose.prod.yml
-        sed -i 's|\${DATABASE_PASSWORD}|'"${{ secrets.DATABASE_PASSWORD }}"'|g' docker-compose.prod.yml
+        envsubst < docker-compose.prod.yml > docker-compose.prod.envsubst.yml
 
     - name: 'Deploy to Azure Web App for Container'
-      env:
-        IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/ci-ms-curso:latest
       uses: azure/webapps-deploy@v2
       with: 
         app-name: ms-curso-ci
