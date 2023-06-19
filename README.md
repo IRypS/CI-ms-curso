@@ -148,4 +148,4 @@
              - `az ad sp create-for-rbac -n AppSvcDemo --role contributor --scopes "resource_id_group"` - donde `-n` es el nombre que le asignas a la credencial y `resource_id_group` es el id que copiaste del comando anterior (incluir comillas)
       2. Crea un secreto en el repo 
          - Guarda el json generado del segundo comando y ponlo en el secreto
-   5. a
+   5. a b
