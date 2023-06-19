@@ -61,9 +61,6 @@ jobs:
     - name: Check out the repository
       uses: actions/checkout@v3
 
-    - name: Show Docker Compose
-      run: cat ./docker-compose.prod.yml
-
     - name: 'Deploy to Azure Web App for Container'
       uses: azure/webapps-deploy@v2
       with: 
