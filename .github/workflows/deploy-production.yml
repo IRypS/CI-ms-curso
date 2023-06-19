@@ -52,8 +52,8 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    
+
     - name: Azure authentication
-      uses: azure/login@v1
+      uses: azure/login@v4
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
