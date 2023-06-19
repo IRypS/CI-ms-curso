@@ -72,4 +72,4 @@ jobs:
       with: 
         app-name: ms-curso-ci
         images: ${{ secrets.DOCKERHUB_USERNAME }}/ci-ms-curso:latest
-        docker-compose-file: ./docker-compose.prod.yml
+        configuration-file: ./docker-compose.prod.yml
