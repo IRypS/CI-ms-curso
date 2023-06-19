@@ -61,12 +61,15 @@ jobs:
     - name: Check out the repository
       uses: actions/checkout@v3
 
-    - name: Replace secrets in docker-compose.yml
+    - name: Replace secrets in docker-compose.prod.yml
       run: |
-        sed -i "s|__DATABASE_URL__|${{ secrets.DATABASE_URL }}|g" docker-compose.yml
-        sed -i "s|__DATABASE_USERNAME__|${{ secrets.DATABASE_USERNAME }}|g" docker-compose.yml
-        sed -i "s|__DATABASE_PASSWORD__|${{ secrets.DATABASE_PASSWORD }}|g" docker-compose.yml
-        
+        sed -i "s|__DATABASE_URL__|${{ secrets.DATABASE_URL }}|g" ./docker-compose.prod.yml
+        sed -i "s|__DATABASE_USERNAME__|${{ secrets.DATABASE_USERNAME }}|g" ./docker-compose.prod.yml
+        sed -i "s|__DATABASE_PASSWORD__|${{ secrets.DATABASE_PASSWORD }}|g" ./docker-compose.prod.yml
+
+    - name: show docker compose 
+      run: cat ./docker-compose.prod.yml
+
     - name: 'Deploy to Azure Web App for Container'
       uses: azure/webapps-deploy@v2
       env:
