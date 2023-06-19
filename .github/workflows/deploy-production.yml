@@ -50,11 +50,6 @@ jobs:
   azure-deploy-image:
     needs: dockerize-and-upload
     runs-on: ubuntu-22.04
-
-    env:
-      DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
-      DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
     
     steps:
 
@@ -65,13 +60,6 @@ jobs:
 
     - name: Check out the repository
       uses: actions/checkout@v3
-
-    - name: Step 1 - Viendo si imprime
-      run: echo $DATABASE_URL
-    - name: Step 2 - Viendo si imprime
-      run: echo $DATABASE_USERNAME
-    - name: Step 3 - Viendo si imprime
-      run: echo $DATABASE_PASSWORD
 
     - name: Show Docker Compose
       run: cat ./docker-compose.prod.yml
