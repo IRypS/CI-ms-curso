@@ -51,6 +51,11 @@ jobs:
     needs: dockerize-and-upload
     runs-on: ubuntu-22.04
 
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+      DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+    
     steps:
 
     - name: Azure authentication
@@ -61,30 +66,18 @@ jobs:
     - name: Check out the repository
       uses: actions/checkout@v3
 
-    - name: Set environment variable
-      run: |
-        echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> $GITHUB_ENV
-
-    - name: Replace secrets in docker-compose.prod.yml
-      env:
-        DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
-        DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-        IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/ci-ms-curso:latest
-      run: |
-        echo DATABASE_URL
-        envsubst < ./docker-compose.prod.yml > ./docker-compose.prod.yml.replaced
-        mv ./docker-compose.prod.yml.replaced ./docker-compose.prod.yml
+    - name: Step 1 - Viendo si imprime
+      run: echo $DATABASE_URL
+    - name: Step 2 - Viendo si imprime
+      run: echo $DATABASE_USERNAME
+    - name: Step 3 - Viendo si imprime
+      run: echo $DATABASE_PASSWORD
 
     - name: Show Docker Compose
       run: cat ./docker-compose.prod.yml
 
     - name: 'Deploy to Azure Web App for Container'
       uses: azure/webapps-deploy@v2
-      env:
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
-        DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-        IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/ci-ms-curso:latest
       with: 
         app-name: ms-curso-ci
         images: ${{ secrets.DOCKERHUB_USERNAME }}/ci-ms-curso:latest
