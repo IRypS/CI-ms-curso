@@ -63,9 +63,10 @@ jobs:
 
     - name: 'Deploy to Azure Web App for Container'
       env:
-            DATABASE_URL: ${{ secrets.DATABASE_URL }}
-            DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
-            DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+        DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+        IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/ci-ms-curso:latest
       uses: azure/webapps-deploy@v2
       with: 
         app-name: ms-curso-ci
