@@ -62,4 +62,4 @@ jobs:
       uses: azure/webapps-deploy@v2
       with: 
         app-name: ms-curso-ci
-        images: ${{ DOCKERHUB_USERNAME }}/ci-ms-curso:latest
+        images: ${{ secrets.DOCKERHUB_USERNAME }}/ci-ms-curso:latest
