@@ -47,7 +47,7 @@ jobs:
           file: ./dockerfile.prod
           context: .
 
-  azure-login:
+  azure-deploy-image:
     needs: dockerize-and-upload
     runs-on: ubuntu-22.04
 
@@ -58,8 +58,18 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+    - name: Check out the repository
+      uses: actions/checkout@v3
+      with:
+        path: 'docker-compose.prod.yml'
+
     - name: 'Deploy to Azure Web App for Container'
+      env:
+            DATABASE_URL: ${{ secrets.DATABASE_URL }}
+            DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+            DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
       uses: azure/webapps-deploy@v2
       with: 
         app-name: ms-curso-ci
         images: ${{ secrets.DOCKERHUB_USERNAME }}/ci-ms-curso:latest
+        docker-compose-file: ./docker-compose.prod.yml
