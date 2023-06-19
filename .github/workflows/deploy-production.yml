@@ -61,14 +61,17 @@ jobs:
     - name: Check out the repository
       uses: actions/checkout@v3
 
+    - name: Set environment variable
+      run: |
+        echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> $GITHUB_ENV
+
     - name: Replace secrets in docker-compose.prod.yml
       env:
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
         DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
         DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
         IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/ci-ms-curso:latest
       run: |
-        echo ${{ env.DATABASE_URL }}
+        echo DATABASE_URL
         envsubst < ./docker-compose.prod.yml > ./docker-compose.prod.yml.replaced
         mv ./docker-compose.prod.yml.replaced ./docker-compose.prod.yml
 
