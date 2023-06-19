@@ -60,8 +60,6 @@ jobs:
 
     - name: Check out the repository
       uses: actions/checkout@v3
-      with:
-        path: './docker-compose.prod.yml'
 
     - name: 'Deploy to Azure Web App for Container'
       env:
