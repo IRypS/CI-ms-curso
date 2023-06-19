@@ -68,7 +68,7 @@ jobs:
         DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
         IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/ci-ms-curso:latest
       run: |
-        echo $DATABASE_URL
+        echo ${{ env.DATABASE_URL }}
         envsubst < ./docker-compose.prod.yml > ./docker-compose.prod.yml.replaced
         mv ./docker-compose.prod.yml.replaced ./docker-compose.prod.yml
 
