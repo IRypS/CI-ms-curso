@@ -18,15 +18,15 @@ jobs:
         run: ls /
 
       - name: cat the file
-        run: cat ./docker-compose.test.yaml
+        run: cat ./docker-compose.test.yml
 
       - name: Get secrets
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "DATABASE_URL=${secrets.DATABASE_URL}" >> ./docker-compose.test.yaml
-          echo "DATABASE_USERNAME=${secrets.DATABASE_USERNAME}" >> ./docker-compose.test.yaml
-          echo "DATABASE_PASSWORD=${secrets.DATABASE_PASSWORD}" >> ./docker-compose.test.yaml
+          echo "DATABASE_URL=${secrets.DATABASE_URL}" >> ./docker-compose.test.yml
+          echo "DATABASE_USERNAME=${secrets.DATABASE_USERNAME}" >> ./docker-compose.test.yml
+          echo "DATABASE_PASSWORD=${secrets.DATABASE_PASSWORD}" >> ./docker-compose.test.yml
 
       - name: cat the AGAIN file
-        run: cat ./docker-compose.test.yaml
+        run: cat ./docker-compose.test.yml
