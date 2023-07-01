@@ -1,0 +1,15 @@
+name: Just an test
+
+on:
+  push:
+    branches:
+      - test
+
+jobs:
+  
+  make-an-archieve:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: List
+        run: ls /
