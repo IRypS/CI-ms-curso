@@ -23,6 +23,9 @@ jobs:
       - name: Get secrets
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
         run: |
           echo "DATABASE_URL=${secrets.DATABASE_URL}" >> ./docker-compose.test.yml
           echo "DATABASE_USERNAME=${secrets.DATABASE_USERNAME}" >> ./docker-compose.test.yml
