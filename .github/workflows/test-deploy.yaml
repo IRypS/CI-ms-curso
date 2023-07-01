@@ -11,5 +11,22 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: List
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: check the repo
         run: ls /
+
+      - name: cat the file
+        run: cat ./docker-compose.test.yaml
+
+      - name: Get secrets
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "DATABASE_URL=${secrets.DATABASE_URL}" >> ./docker-compose.test.yaml
+          echo "DATABASE_USERNAME=${secrets.DATABASE_USERNAME}" >> ./docker-compose.test.yaml
+          echo "DATABASE_PASSWORD=${secrets.DATABASE_PASSWORD}" >> ./docker-compose.test.yaml
+
+      - name: cat the AGAIN file
+        run: cat ./docker-compose.test.yaml

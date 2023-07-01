@@ -1,0 +1,12 @@
+version: '1.0'
+
+services:
+  ms-curso:
+    container_name: ms-curso2
+    image: iryps/ci-ms-curso:latest
+    ports:
+      - 8083:8083
+    environment:
+      - DATABASE_URL=jdbc:mysql://root:ADvdTxVSjDISVyZtFStD@containers-us-west-48.railway.app:7181/colegio
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=ADvdTxVSjDISVyZtFStD
