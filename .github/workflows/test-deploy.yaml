@@ -27,9 +27,9 @@ jobs:
           DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
           DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
         run: |
-          echo "DATABASE_URL=${secrets.DATABASE_URL}" >> ./docker-compose.test.yml
-          echo "DATABASE_USERNAME=${secrets.DATABASE_USERNAME}" >> ./docker-compose.test.yml
-          echo "DATABASE_PASSWORD=${secrets.DATABASE_PASSWORD}" >> ./docker-compose.test.yml
+          echo "DATABASE_URL=${DATABASE_URL}" >> ./docker-compose.test.yml
+          echo "DATABASE_USERNAME=${DATABASE_USERNAME}" >> ./docker-compose.test.yml
+          echo "DATABASE_PASSWORD=${DATABASE_PASSWORD}" >> ./docker-compose.test.yml
 
       - name: cat the AGAIN file
         run: cat ./docker-compose.test.yml
