@@ -22,9 +22,14 @@ jobs:
 
       - name: toy
         run: |
-          sed -i '/DATABASE_URL/d' ./docker-compose.test.yml
-          sed -i '/DATABASE_USERNAME/d' ./docker-compose.test.yml
-          sed -i '/DATABASE_PASSWORD/d' ./docker-compose.test.yml
+          sed -i '/DATABASE_URL/c echo -e "URL" ' ./docker-compose.test.yml
+          sed -i '/DATABASE_USERNAME/c echo -e "USUARIO' ./docker-compose.test.yml
+          sed -i '/DATABASE_PASSWORD/c echo -e "PASS' ./docker-compose.test.yml
+      # - name: toy
+      #   run: |
+      #     sed -i '/DATABASE_URL/d' ./docker-compose.test.yml
+      #     sed -i '/DATABASE_USERNAME/d' ./docker-compose.test.yml
+      #     sed -i '/DATABASE_PASSWORD/d' ./docker-compose.test.yml
 
       # - name: Get secrets
       #   env:
