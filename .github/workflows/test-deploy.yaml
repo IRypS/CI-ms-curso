@@ -59,3 +59,9 @@ jobs:
 
       - name: cat the AGAIN file
         run: cat ./docker-compose.test.yml
+
+      - name: Create artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: docker-compose.test.yml
+          path: ./docker-compose.test.yml
