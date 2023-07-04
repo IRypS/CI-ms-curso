@@ -26,7 +26,8 @@ jobs:
         run: |
           sed -i "/DATABASE_URL/c       \      - ${{ secrets.DATABASE_URL }}" ./docker-compose.test.yml
           sed -i "/DATABASE_USERNAME/c  \      - ${{ secrets.DATABASE_USERNAME }}" ./docker-compose.test.yml
-          sed -i "/DATABASE_PASSWORD/c  \      - ${{ secrets.DATABASE_PASSWORD }}" ./docker-compose.test.yml
+          sed -i "/DATABASE_PASSWORD/c  \      - <span class="math-inline">\{\{ secrets\.DATABASE\_PASSWORD \}\}" \./docker\-compose\.test\.yml
+          # sed -i "/DATABASE_PASSWORD/c  \      - ${{ secrets.DATABASE_PASSWORD }}" ./docker-compose.test.yml
           echo -e '- CAHNCADO=${{ env.TEMP }}' >> ./docker-compose.test.yml
           echo -e '\n - PROBE=${{ secrets.DATABASE_URL }}' >> ./docker-compose.test.yml
       # - name: toy
