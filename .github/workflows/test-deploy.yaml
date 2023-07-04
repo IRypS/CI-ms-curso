@@ -1,0 +1,56 @@
+name: Just an test
+
+on:
+  push:
+    branches:
+      - test
+
+jobs:
+  
+  make-an-archieve:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: check the repo
+        run: ls /
+
+      - name: cat the file
+        run: cat ./docker-compose.test.yml
+
+      - name: toy
+        run: |
+          sed -i "/DATABASE_URL/c       \      - ${{ secrets.DATABASE_URL }}" ./docker-compose.test.yml
+          sed -i "/DATABASE_USERNAME/c  \      - ${{ secrets.DATABASE_USERNAME }}" ./docker-compose.test.yml
+          sed -i "/DATABASE_PASSWORD/c  \      - ${{ secrets.DATABASE_PASSWORD }}" ./docker-compose.test.yml
+      # - name: toy
+      #   run: |
+      #     sed -i "/DATABASE_URL/c       \      - URL" ./docker-compose.test.yml
+      #     sed -i "/DATABASE_USERNAME/c  \      - USUARIO" ./docker-compose.test.yml
+      #     sed -i "/DATABASE_PASSWORD/c  \      - PASS" ./docker-compose.test.yml
+      # - name: toy
+      #   run: |
+      #     sed -i '/DATABASE_URL/c \\t - URL' ./docker-compose.test.yml
+      #     sed -i '/DATABASE_USERNAME/c \\t - USUARIO' ./docker-compose.test.yml
+      #     sed -i '/DATABASE_PASSWORD/c \\t - PASS' ./docker-compose.test.yml
+      # - name: toy
+      #   run: |
+      #     sed -i '/DATABASE_URL/d' ./docker-compose.test.yml
+      #     sed -i '/DATABASE_USERNAME/d' ./docker-compose.test.yml
+      #     sed -i '/DATABASE_PASSWORD/d' ./docker-compose.test.yml
+
+      # - name: Get secrets
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      #     DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+      #     DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+      #   run: |
+      #     echo -e '\n \t \t - DATABASE_URL=${DATABASE_URL}' >> ./docker-compose.test.yml
+      #     echo -e '\n \t \t - DATABASE_USERNAME=${DATABASE_USERNAME}' >> ./docker-compose.test.yml
+      #     echo -e '\n \t \t - DATABASE_PASSWORD=${DATABASE_PASSWORD}' >> ./docker-compose.test.yml
+
+      - name: cat the AGAIN file
+        run: cat ./docker-compose.test.yml

@@ -61,9 +61,15 @@ jobs:
     - name: Check out the repository
       uses: actions/checkout@v3
 
+    - name: Replace variables
+      run: |
+        sed -i "/DATABASE_URL/c       \      - ${{ secrets.DATABASE_URL }}" ./docker-compose.test.yml
+        sed -i "/DATABASE_USERNAME/c  \      - ${{ secrets.DATABASE_USERNAME }}" ./docker-compose.test.yml
+        sed -i "/DATABASE_PASSWORD/c  \      - ${{ secrets.DATABASE_PASSWORD }}" ./docker-compose.test.yml
+
     - name: 'Deploy to Azure Web App for Container'
       uses: azure/webapps-deploy@v2
       with: 
         app-name: ms-curso-ci
         images: ${{ secrets.DOCKERHUB_USERNAME }}/ci-ms-curso:latest
-        configuration-file: ./docker-compose.prod.yml
+        configuration-file: ./docker-compose.test.yml
