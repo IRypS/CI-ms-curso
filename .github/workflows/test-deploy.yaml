@@ -22,7 +22,7 @@ jobs:
 
       - name: toy
         env: 
-          TEMP: probando
+          TEMP: ${{ secrets.DATABASE_URL }}
         run: |
           sed -i "/DATABASE_URL/c       \      - ${{ secrets.DATABASE_URL }}" ./docker-compose.test.yml
           sed -i "/DATABASE_USERNAME/c  \      - ${{ secrets.DATABASE_USERNAME }}" ./docker-compose.test.yml
