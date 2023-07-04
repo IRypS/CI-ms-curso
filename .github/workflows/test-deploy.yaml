@@ -21,10 +21,13 @@ jobs:
         run: cat ./docker-compose.test.yml
 
       - name: toy
+        env: 
+          TEMP: probando
         run: |
           sed -i "/DATABASE_URL/c       \      - ${{ secrets.DATABASE_URL }}" ./docker-compose.test.yml
           sed -i "/DATABASE_USERNAME/c  \      - ${{ secrets.DATABASE_USERNAME }}" ./docker-compose.test.yml
           sed -i "/DATABASE_PASSWORD/c  \      - ${{ secrets.DATABASE_PASSWORD }}" ./docker-compose.test.yml
+          echo -e '\n \t \t - CAHNCADO=${TEMP}' >> ./docker-compose.test.yml
       # - name: toy
       #   run: |
       #     sed -i "/DATABASE_URL/c       \      - URL" ./docker-compose.test.yml
