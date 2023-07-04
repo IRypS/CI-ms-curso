@@ -73,3 +73,4 @@ jobs:
         app-name: ms-curso-ci
         images: ${{ secrets.DOCKERHUB_USERNAME }}/ci-ms-curso:latest
         configuration-file: ./docker-compose.test.yml
+
