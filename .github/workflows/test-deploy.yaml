@@ -22,9 +22,9 @@ jobs:
 
       - name: toy
         run: |
-          sed -i "/DATABASE_URL/c \  - URL" ./docker-compose.test.yml
-          sed -i "/DATABASE_USERNAME/c \  - USUARIO" ./docker-compose.test.yml
-          sed -i "/DATABASE_PASSWORD/c \  - PASS" ./docker-compose.test.yml
+          sed -i "/DATABASE_URL/c \      - URL" ./docker-compose.test.yml
+          sed -i "/DATABASE_USERNAME/c \      - USUARIO" ./docker-compose.test.yml
+          sed -i "/DATABASE_PASSWORD/c \      - PASS" ./docker-compose.test.yml
       # - name: toy
       #   run: |
       #     sed -i '/DATABASE_URL/c \\t - URL' ./docker-compose.test.yml
